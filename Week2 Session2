@@ -1,0 +1,1307 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "session4_header"
+      },
+      "source": [
+        "# Week 2, Session 2: Conditional Logic\n",
+        "\n",
+        "**Date:** ___________  \n",
+        "**Student Name:** ___________\n",
+        "\n",
+        "## Learning Objectives\n",
+        "- Use comparison operators\n",
+        "- Understand Boolean logic\n",
+        "- Write if/elif/else statements\n",
+        "- Combine conditions with and/or/not\n",
+        "- Understand Python indentation\n",
+        "\n",
+        "---"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "review_section"
+      },
+      "source": [
+        "## Part 1: Quick Review\n",
+        "\n",
+        "Let's review Session 1:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "review_code"
+      },
+      "outputs": [],
+      "source": [
+        "# Getting input and converting types\n",
+        "name = input(\"What's your name? \")\n",
+        "age = int(input(\"How old are you? \"))\n",
+        "height = float(input(\"How tall are you (in meters)? \"))\n",
+        "\n",
+        "# F-strings for formatting\n",
+        "print(f\"Hello {name}! You are {age} years old and {height}m tall.\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "comparison_intro"
+      },
+      "source": [
+        "---\n",
+        "## Part 2: Comparison Operators - Comparing Values\n",
+        "\n",
+        "Comparison operators let us **compare** two values. They always return a Boolean (`True` or `False`).\n",
+        "\n",
+        "| Operator | Meaning | Example | Result |\n",
+        "|----------|---------|---------|--------|\n",
+        "| `==` | Equal to | `5 == 5` | `True` |\n",
+        "| `!=` | Not equal to | `5 != 3` | `True` |\n",
+        "| `>` | Greater than | `7 > 3` | `True` |\n",
+        "| `<` | Less than | `3 < 7` | `True` |\n",
+        "| `>=` | Greater than or equal to | `5 >= 5` | `True` |\n",
+        "| `<=` | Less than or equal to | `3 <= 5` | `True` |"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "important_note"
+      },
+      "source": [
+        "### ⚠️ IMPORTANT: `=` vs `==`\n",
+        "\n",
+        "- **`=`** is for **assignment** (storing a value)\n",
+        "  - Example: `age = 20` → Store 20 in the variable age\n",
+        "\n",
+        "- **`==`** is for **comparison** (checking if equal)\n",
+        "  - Example: `age == 20` → Check if age equals 20 (returns True or False)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "comparison_examples"
+      },
+      "outputs": [],
+      "source": [
+        "# Comparison examples\n",
+        "x = 10\n",
+        "y = 5\n",
+        "\n",
+        "# Equal to\n",
+        "print(x == y)      # False bc (10 is not equal to 5)\n",
+        "print(x == 10)     # True bc (10 equals 10)\n",
+        "\n",
+        "# Not equal to\n",
+        "print(x != y)      # True bc (10 is not equal to 5)\n",
+        "\n",
+        "# Greater than\n",
+        "print(x > y)       # True bc (10 is greater than 5)\n",
+        "\n",
+        "# Less than\n",
+        "print(x < y)       # False bc (10 is not less than 5)\n",
+        "\n",
+        "# Greater than or equal to\n",
+        "print(x >= 10)     # True bc (10 is equal to 10)\n",
+        "\n",
+        "# Less than or equal to\n",
+        "print(y <= 5)      # True bc (5 is equal to 5)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "string_comparison"
+      },
+      "outputs": [],
+      "source": [
+        "# You can also compare strings!\n",
+        "name1 = \"Alice\"\n",
+        "name2 = \"Bob\"\n",
+        "\n",
+        "print(name1 == \"Alice\")\n",
+        "print(name1 == \"alice\")   # False (case-sensitive!) - Alice is not the same as alice\n",
+        "print(name1 != name2)     # True bc Alice is not Bob, so this comes out as true\n",
+        "\n",
+        "# Strings can be compared alphabetically\n",
+        "print(\"Apple\" < \"Banana\")  # True (A comes before B)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "boolean_section"
+      },
+      "source": [
+        "### Boolean Values\n",
+        "\n",
+        "Comparisons return Boolean values (`True` or `False`):"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "boolean_examples"
+      },
+      "outputs": [],
+      "source": [
+        "# Store comparison results\n",
+        "age = 20\n",
+        "is_adult = age >= 18      # True\n",
+        "is_teenager = age < 18    # False\n",
+        "\n",
+        "print(\"Is adult?\", is_adult)\n",
+        "print(\"Is teenager?\", is_teenager)\n",
+        "print(\"Type:\", type(is_adult))  # <class 'bool'>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "your_turn_1"
+      },
+      "source": [
+        "### ✏️ Your Turn!\n",
+        "Practice comparisons:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "practice_comparisons",
+        "outputId": "a65c7988-ecd6-401e-edf5-4f6a0835403a",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "False\n",
+            "False\n",
+            "True\n",
+            "False\n",
+            "True\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Create two variables\n",
+        "score1 = 85\n",
+        "score2 = 92\n",
+        "\n",
+        "# Compare them (try different operators)\n",
+        "print(score1 == score2)    # Are they equal?\n",
+        "print(score1 > score2)     # Is score1 greater?\n",
+        "print(score1 <= score2)    # Is score1 less than or equal?\n",
+        "\n",
+        "# Now create your own comparisons:\n",
+        "print(score1 >= score2)\n",
+        "print(score1 != score2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "logical_operators"
+      },
+      "source": [
+        "---\n",
+        "## Part 3: Logical Operators - Combining Conditions\n",
+        "\n",
+        "Logical operators let us combine multiple conditions:\n",
+        "\n",
+        "| Operator | Meaning | Example | Result |\n",
+        "|----------|---------|---------|--------|\n",
+        "| `and` | Both must be True | `True and True` | `True` |\n",
+        "| `or` | At least one must be True | `True or False` | `True` |\n",
+        "| `not` | Reverses the boolean | `not True` | `False` |"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "and_operator"
+      },
+      "source": [
+        "### The `and` Operator\n",
+        "\n",
+        "`and` returns `True` only if **BOTH** conditions are true."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "and_examples"
+      },
+      "outputs": [],
+      "source": [
+        "# Basic and examples\n",
+        "print(True and True)      # True\n",
+        "print(True and False)     # False\n",
+        "print(False and False)    # False\n",
+        "\n",
+        "# Practical example\n",
+        "age = 20\n",
+        "has_id = True\n",
+        "\n",
+        "# Can enter club if: age >= 18 AND has ID\n",
+        "can_enter_club = age >= 18 and has_id\n",
+        "print(\"Can enter club?\", can_enter_club)\n",
+        "\n",
+        "# Both conditions must be true\n",
+        "age = 16\n",
+        "has_id = True\n",
+        "can_enter_club = age >= 18 and has_id\n",
+        "print(\"Can enter club?\", can_enter_club)  # False (age too young)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "or_operator"
+      },
+      "source": [
+        "### The `or` Operator\n",
+        "\n",
+        "`or` returns `True` if **AT LEAST ONE** condition is true."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "or_examples"
+      },
+      "outputs": [],
+      "source": [
+        "# Basic or examples\n",
+        "print(True or True)       # True\n",
+        "print(True or False)      # True\n",
+        "print(False or False)     # False\n",
+        "\n",
+        "# Practical example\n",
+        "is_weekend = True\n",
+        "is_holiday = False\n",
+        "\n",
+        "# Can sleep in if: weekend OR holiday\n",
+        "can_sleep_in = is_weekend or is_holiday\n",
+        "print(\"Can sleep in?\", can_sleep_in)  # True\n",
+        "\n",
+        "# Only need ONE to be true\n",
+        "is_weekend = False\n",
+        "is_holiday = True\n",
+        "can_sleep_in = is_weekend or is_holiday\n",
+        "print(\"Can sleep in?\", can_sleep_in)  # Still True!"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "not_operator"
+      },
+      "source": [
+        "### The `not` Operator\n",
+        "\n",
+        "`not` **reverses** a boolean value."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "id": "not_examples",
+        "outputId": "294e97b5-6669-4c8b-b65a-0f05c2ba878a",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "False\n",
+            "True\n",
+            "Need umbrella? True\n",
+            "Are you free? False\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Basic not examples\n",
+        "print(not True)      # False\n",
+        "print(not False)     # True\n",
+        "\n",
+        "# Practical example\n",
+        "is_raining = False\n",
+        "need_umbrella = not is_raining\n",
+        "print(\"Need umbrella?\", need_umbrella)  # True (because it's NOT raining)\n",
+        "\n",
+        "# Another example\n",
+        "has_homework = True\n",
+        "is_free = not has_homework\n",
+        "print(\"Are you free?\", is_free)  # False (you have homework!)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "combining_logical"
+      },
+      "source": [
+        "### Combining Multiple Conditions"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "complex_logical"
+      },
+      "outputs": [],
+      "source": [
+        "# Complex example: Passing a class\n",
+        "score = 85\n",
+        "attendance = 90\n",
+        "\n",
+        "# Pass if: score >= 60 AND attendance >= 75\n",
+        "passed = score >= 60 and attendance >= 75\n",
+        "print(\"Did you pass?\", passed)  # True\n",
+        "\n",
+        "# Even more complex\n",
+        "has_extra_credit = False\n",
+        "passed_or_extra = (score >= 60 and attendance >= 75) or has_extra_credit\n",
+        "print(\"Passed (considering extra credit)?\", passed_or_extra)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "your_turn_2"
+      },
+      "source": [
+        "### ✏️ Your Turn!\n",
+        "Practice logical operators:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "practice_logical"
+      },
+      "outputs": [],
+      "source": [
+        "# Create a scenario: Going to the beach\n",
+        "is_sunny = True\n",
+        "temperature = 80\n",
+        "has_free_time = True\n",
+        "\n",
+        "# Can go to beach if: sunny AND temp > 75 AND has free time\n",
+        "can_go_to_beach =\n",
+        "\n",
+        "print(\"Can go to beach?\", can_go_to_beach)\n",
+        "\n",
+        "# Create your own scenario:\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "if_statements"
+      },
+      "source": [
+        "---\n",
+        "## Part 4: If Statements - Making Decisions\n",
+        "\n",
+        "Now we can use conditions to make our programs **make decisions**!\n",
+        "\n",
+        "### Basic `if` Statement\n",
+        "\n",
+        "```python\n",
+        "if condition:\n",
+        "    # Code to run if condition is True\n",
+        "    # This code must be indented!\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "simple_if"
+      },
+      "outputs": [],
+      "source": [
+        "# Simple if statement\n",
+        "temperature = 75\n",
+        "\n",
+        "if temperature > 70:\n",
+        "    print(\"It's warm outside!\")\n",
+        "    print(\"Wear shorts!\")\n",
+        "\n",
+        "print(\"This line always runs\")  # Not indented, so it will run regardless"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "if_examples"
+      },
+      "outputs": [],
+      "source": [
+        "# More examples\n",
+        "age = 20\n",
+        "\n",
+        "if age >= 18:\n",
+        "    print(\"You can vote!\")\n",
+        "\n",
+        "score = 95\n",
+        "\n",
+        "if score >= 90:\n",
+        "    print(\"Excellent work!\")\n",
+        "    print(\"You got an A!\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "if_else"
+      },
+      "source": [
+        "### `if-else` Statement\n",
+        "\n",
+        "Do one thing if True, another thing if False:\n",
+        "\n",
+        "```python\n",
+        "if condition:\n",
+        "    # Run if True\n",
+        "else:\n",
+        "    # Run if False\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "if_else_examples"
+      },
+      "outputs": [],
+      "source": [
+        "# If-else example\n",
+        "age = 16\n",
+        "\n",
+        "if age >= 18:\n",
+        "    print(\"You can vote!\")\n",
+        "else:\n",
+        "    print(\"You cannot vote yet.\")\n",
+        "    years_until = 18 - age\n",
+        "    print(f\"Wait {years_until} more years.\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "more_if_else"
+      },
+      "outputs": [],
+      "source": [
+        "# Another example\n",
+        "password = \"python123\"\n",
+        "user_input = input(\"Enter password: \")\n",
+        "\n",
+        "if user_input == password:\n",
+        "    print(\"✓ Access granted!\")\n",
+        "else:\n",
+        "    print(\"✗ Access denied!\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "if_elif_else"
+      },
+      "source": [
+        "### `if-elif-else` Statement\n",
+        "\n",
+        "Check multiple conditions:\n",
+        "\n",
+        "```python\n",
+        "if condition1:\n",
+        "    # Run if condition1 is True\n",
+        "elif condition2:\n",
+        "    # Run if condition1 is False AND condition2 is True\n",
+        "elif condition3:\n",
+        "    # Run if condition1 and condition2 are False AND condition3 is True\n",
+        "else:\n",
+        "    # Run if all conditions are False\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "grade_example"
+      },
+      "outputs": [],
+      "source": [
+        "# Grade calculator\n",
+        "score = 85\n",
+        "\n",
+        "if score >= 90:\n",
+        "    print(\"Grade: A\")\n",
+        "    print(\"Excellent!\")\n",
+        "elif score >= 80:\n",
+        "    print(\"Grade: B\")\n",
+        "    print(\"Great job!\")\n",
+        "elif score >= 70:\n",
+        "    print(\"Grade: C\")\n",
+        "    print(\"Good work!\")\n",
+        "elif score >= 60:\n",
+        "    print(\"Grade: D\")\n",
+        "    print(\"You passed.\")\n",
+        "else:\n",
+        "    print(\"Grade: F\")\n",
+        "    print(\"Keep trying!\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "time_of_day"
+      },
+      "outputs": [],
+      "source": [
+        "# Time of day greeting\n",
+        "hour = int(input(\"What hour is it? (0-23): \"))\n",
+        "\n",
+        "if hour < 12:\n",
+        "    print(\"Good morning!\")\n",
+        "elif hour < 17:\n",
+        "    print(\"Good afternoon!\")\n",
+        "elif hour < 21:\n",
+        "    print(\"Good evening!\")\n",
+        "else:\n",
+        "    print(\"Good night!\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "nested_if"
+      },
+      "source": [
+        "### Nested If Statements\n",
+        "\n",
+        "You can put if statements inside other if statements:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "nested_example"
+      },
+      "outputs": [],
+      "source": [
+        "# Nested if example: Driving eligibility\n",
+        "age = 25\n",
+        "has_license = True\n",
+        "\n",
+        "if age >= 16:\n",
+        "    if has_license:\n",
+        "        print(\"✓ You can drive!\")\n",
+        "    else:\n",
+        "        print(\"✗ You need a license to drive.\")\n",
+        "else:\n",
+        "    print(\"✗ You're too young to drive.\")\n",
+        "    print(f\"  Wait {16 - age} more years.\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "indentation_critical"
+      },
+      "source": [
+        "### 🔴 CRITICAL: Indentation in Python\n",
+        "\n",
+        "**Python uses indentation (spaces) to define code blocks!**\n",
+        "\n",
+        "Rules:\n",
+        "- Use **4 spaces** or **1 tab** for each level of indentation\n",
+        "- Be consistent (don't mix tabs and spaces)\n",
+        "- Everything at the same indentation level is part of the same block\n",
+        "- Wrong indentation = Error!"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "indentation_examples"
+      },
+      "outputs": [],
+      "source": [
+        "# CORRECT indentation\n",
+        "x = 10\n",
+        "\n",
+        "if x > 5:\n",
+        "    print(\"x is big\")      # Indented - part of if block\n",
+        "    print(\"Very big!\")     # Also indented - part of if block\n",
+        "\n",
+        "print(\"Done\")              # Not indented - always runs\n",
+        "\n",
+        "# INCORRECT - will cause IndentationError\n",
+        "# if x > 5:\n",
+        "# print(\"This won't work\")  # Not indented!"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "your_turn_3"
+      },
+      "source": [
+        "### ✏️ Your Turn!\n",
+        "Write an if-elif-else statement:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "practice_if"
+      },
+      "outputs": [],
+      "source": [
+        "# Ask user for temperature\n",
+        "temp = int(input(\"What's the temperature? \"))\n",
+        "\n",
+        "# Print different messages based on temperature:\n",
+        "# > 90: \"It's very hot!\"\n",
+        "# > 70: \"It's warm!\"\n",
+        "# > 50: \"It's cool.\"\n",
+        "# Otherwise: \"It's cold!\"\n",
+        "\n",
+        "# Write your code here:\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "complete_example"
+      },
+      "source": [
+        "### Complete Example: Age Verifier"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "age_verifier"
+      },
+      "outputs": [],
+      "source": [
+        "# Age verification system\n",
+        "print(\"=== Age Verification System ===\")\n",
+        "name = input(\"What's your name? \")\n",
+        "age = int(input(\"How old are you? \"))\n",
+        "\n",
+        "print(f\"\\nHello, {name}!\")\n",
+        "\n",
+        "if age < 0:\n",
+        "    print(\"❌ Invalid age!\")\n",
+        "elif age < 13:\n",
+        "    print(\"You're a child.\")\n",
+        "    print(\"Enjoy being young!\")\n",
+        "elif age < 18:\n",
+        "    print(\"You're a teenager.\")\n",
+        "    years_until_adult = 18 - age\n",
+        "    print(f\"{years_until_adult} years until you're an adult!\")\n",
+        "elif age < 65:\n",
+        "    print(\"You're an adult.\")\n",
+        "    if age >= 21:\n",
+        "        print(\"You can vote and drink (in the US).\")\n",
+        "    else:\n",
+        "        print(\"You can vote but not drink yet.\")\n",
+        "else:\n",
+        "    print(\"You're a senior citizen.\")\n",
+        "    print(\"Enjoy your retirement years!\")\n",
+        "\n",
+        "print(\"\\nThank you for using the system!\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "lab4_intro"
+      },
+      "source": [
+        "---\n",
+        "## 🧪 LAB 4: Decision-Making Program\n",
+        "\n",
+        "Choose **ONE** of the following options:\n",
+        "\n",
+        "---\n",
+        "\n",
+        "### Option A: Grade Calculator\n",
+        "\n",
+        "Create a program that:\n",
+        "1. Asks for student name\n",
+        "2. Asks for scores on 3 assignments (0-100)\n",
+        "3. Calculates average score\n",
+        "4. Determines letter grade:\n",
+        "   - A: 90-100\n",
+        "   - B: 80-89\n",
+        "   - C: 70-79\n",
+        "   - D: 60-69\n",
+        "   - F: below 60\n",
+        "5. Prints personalized message with name, average, and grade\n",
+        "\n",
+        "**Bonus:** Check if average >= 70 **AND** all individual scores >= 60 to determine if student passes overall.\n",
+        "\n",
+        "---\n",
+        "\n",
+        "### Option B: Simple Chatbot\n",
+        "\n",
+        "Create a chatbot that:\n",
+        "1. Asks for user's name\n",
+        "2. Asks how they're feeling (good/bad/okay)\n",
+        "3. Responds differently based on their mood\n",
+        "4. Asks if they like Python (yes/no)\n",
+        "5. Gives encouraging message if yes, motivational message if no\n",
+        "6. Uses nested if statements for more complex responses\n",
+        "\n",
+        "---\n",
+        "\n",
+        "### Option C: Number Guessing Game (Simplified)\n",
+        "\n",
+        "Create a program that:\n",
+        "1. Has a secret number (you hardcode it, like 42)\n",
+        "2. Asks user to guess the number\n",
+        "3. Tells them if they're correct\n",
+        "4. If wrong, tells them if their guess was too high or too low\n",
+        "5. Displays encouraging message either way\n",
+        "\n",
+        "---\n",
+        "\n",
+        "### Requirements for All Options:\n",
+        "- ✅ Use `input()` for user interaction\n",
+        "- ✅ Use at least one if-elif-else chain\n",
+        "- ✅ Use at least one logical operator (and/or/not)\n",
+        "- ✅ Have clear, commented code\n",
+        "- ✅ Test with different inputs"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "lab4_work"
+      },
+      "outputs": [],
+      "source": [
+        "# LAB 4: Write your chosen program here\n",
+        "# Delete the options you're NOT doing\n",
+        "\n",
+        "# ========== OPTION A: GRADE CALCULATOR ==========\n",
+        "print(\"===== Grade Calculator =====\")\n",
+        "\n",
+        "# Step 1: Get student name\n",
+        "\n",
+        "\n",
+        "# Step 2: Get three assignment scores\n",
+        "\n",
+        "\n",
+        "# Step 3: Calculate average\n",
+        "\n",
+        "\n",
+        "# Step 4: Determine letter grade\n",
+        "\n",
+        "\n",
+        "# Step 5: Print results\n",
+        "\n",
+        "\n",
+        "# Bonus: Overall pass/fail check\n",
+        "\n",
+        "\n",
+        "\n",
+        "# ========== OPTION B: CHATBOT ==========\n",
+        "print(\"===== Python Chatbot =====\")\n",
+        "\n",
+        "# Step 1: Get user's name\n",
+        "\n",
+        "\n",
+        "# Step 2: Ask how they're feeling\n",
+        "\n",
+        "\n",
+        "# Step 3: Respond to their mood\n",
+        "\n",
+        "\n",
+        "# Step 4: Ask about Python\n",
+        "\n",
+        "\n",
+        "# Step 5: Respond with encouragement/motivation\n",
+        "\n",
+        "\n",
+        "\n",
+        "# ========== OPTION C: NUMBER GUESSING ==========\n",
+        "print(\"===== Number Guessing Game =====\")\n",
+        "\n",
+        "# Step 1: Set secret number\n",
+        "secret_number =\n",
+        "\n",
+        "# Step 2: Get user's guess\n",
+        "\n",
+        "\n",
+        "# Step 3: Check if correct\n",
+        "\n",
+        "\n",
+        "# Step 4: If wrong, give hint (too high/low)\n",
+        "\n",
+        "\n",
+        "# Step 5: Encouraging message\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "reflection"
+      },
+      "source": [
+        "---\n",
+        "## 📝 Reflection Questions"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "reflection_answers"
+      },
+      "source": [
+        "**Your Answers:**\n",
+        "\n",
+        "1. What's the difference between `=` and `==`?\n",
+        "\n",
+        "2. When would you use `and` vs `or`?\n",
+        "\n",
+        "3. Why is indentation so important in Python?\n",
+        "\n",
+        "4. What's the hardest part about if/elif/else statements?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "assignment_intro"
+      },
+      "source": [
+        "---\n",
+        "---\n",
+        "---\n",
+        "\n",
+        "# 📚 WEEKLY ASSIGNMENT 2\n",
+        "\n",
+        "**Due: Before Week 3, Session 1**\n",
+        "\n",
+        "This assignment covers everything from Week 2 (Sessions 1 & 2).\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "assignment_part1"
+      },
+      "source": [
+        "## Part 1: User Profile Builder\n",
+        "\n",
+        "Create an interactive program that builds a user profile.\n",
+        "\n",
+        "**Requirements:**\n",
+        "- Ask for: name, age, email, city, occupation\n",
+        "- Convert age to integer\n",
+        "- Calculate birth year (current year is 2026)\n",
+        "- Store all information\n",
+        "- Print formatted profile using f-strings"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "assignment_part1_code"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT - Part 1: User Profile Builder\n",
+        "\n",
+        "print(\"===== USER PROFILE BUILDER =====\")\n",
+        "\n",
+        "# Get user information\n",
+        "\n",
+        "\n",
+        "# Calculate birth year\n",
+        "\n",
+        "\n",
+        "# Display profile\n",
+        "print(\"\\n--- Your Profile ---\")\n",
+        "\n",
+        "\n",
+        "print(\"-------------------\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "assignment_part2"
+      },
+      "source": [
+        "## Part 2: Eligibility Checker\n",
+        "\n",
+        "Create a system that checks eligibility for different things based on age.\n",
+        "\n",
+        "**Requirements:**\n",
+        "- Use the age from Part 1 (or ask again)\n",
+        "- Check if user can:\n",
+        "  - Vote (age >= 18)\n",
+        "  - Rent a car (age >= 25)\n",
+        "  - Is senior citizen (age >= 65)\n",
+        "- Print clear YES/NO messages for each"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "assignment_part2_code"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT - Part 2: Eligibility Checker\n",
+        "\n",
+        "print(\"\\n===== ELIGIBILITY CHECKER =====\")\n",
+        "\n",
+        "# Get age (or use from Part 1)\n",
+        "\n",
+        "\n",
+        "# Check voting eligibility\n",
+        "\n",
+        "\n",
+        "# Check car rental eligibility\n",
+        "\n",
+        "\n",
+        "# Check senior citizen status\n",
+        "\n",
+        "\n",
+        "print(\"===============================\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "assignment_part3"
+      },
+      "source": [
+        "## Part 3: Personalized Recommendation System\n",
+        "\n",
+        "Based on user input, give personalized recommendations.\n",
+        "\n",
+        "**Requirements:**\n",
+        "- Ask for age group (child/teen/adult/senior)\n",
+        "- Ask for interests (sports/arts/technology/other)\n",
+        "- Use nested if-elif statements to give personalized activity recommendations\n",
+        "\n",
+        "**Example logic:**\n",
+        "```python\n",
+        "if age_group == \"teen\":\n",
+        "    if interest == \"sports\":\n",
+        "        recommend \"Join a school sports team\"\n",
+        "    elif interest == \"arts\":\n",
+        "        recommend \"Try digital art or photography\"\n",
+        "    # etc.\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "assignment_part3_code"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT - Part 3: Recommendation System\n",
+        "\n",
+        "print(\"\\n===== ACTIVITY RECOMMENDER =====\")\n",
+        "\n",
+        "# Get age group\n",
+        "print(\"Age groups: child, teen, adult, senior\")\n",
+        "\n",
+        "\n",
+        "# Get interest\n",
+        "print(\"Interests: sports, arts, technology, other\")\n",
+        "\n",
+        "\n",
+        "# Give recommendations based on both\n",
+        "print(\"\\n--- Recommendation ---\")\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "print(\"======================\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "assignment_part4"
+      },
+      "source": [
+        "## Part 4: Calculator with Validation\n",
+        "\n",
+        "Create a calculator that validates input.\n",
+        "\n",
+        "**Requirements:**\n",
+        "- Ask user for two numbers\n",
+        "- Ask which operation (+, -, *, /)\n",
+        "- Perform the operation\n",
+        "- **Important:** If division, check that divisor is not 0\n",
+        "- Display result with proper formatting"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "assignment_part4_code"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT - Part 4: Calculator with Validation\n",
+        "\n",
+        "print(\"\\n===== CALCULATOR =====\")\n",
+        "\n",
+        "# Get two numbers\n",
+        "\n",
+        "\n",
+        "# Get operation\n",
+        "print(\"Operations: +, -, *, /\")\n",
+        "\n",
+        "\n",
+        "# Perform calculation with validation\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "print(\"=====================\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "assignment_part5"
+      },
+      "source": [
+        "## Part 5: Text Analyzer\n",
+        "\n",
+        "Analyze user input text.\n",
+        "\n",
+        "**Requirements:**\n",
+        "- Ask user to enter a sentence\n",
+        "- Tell them:\n",
+        "  - How many characters (use `len()`)\n",
+        "  - If it's longer than 50 characters\n",
+        "  - If it contains the word \"python\" (case-insensitive)\n",
+        "- Display it in all caps and all lowercase"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "assignment_part5_code"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT - Part 5: Text Analyzer\n",
+        "\n",
+        "print(\"\\n===== TEXT ANALYZER =====\")\n",
+        "\n",
+        "# Get sentence from user\n",
+        "\n",
+        "\n",
+        "# Analyze the text\n",
+        "# - Character count\n",
+        "\n",
+        "\n",
+        "# - Check length\n",
+        "\n",
+        "\n",
+        "# - Check for \"python\"\n",
+        "\n",
+        "\n",
+        "# - Display in different cases\n",
+        "\n",
+        "\n",
+        "print(\"========================\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "bonus_challenges"
+      },
+      "source": [
+        "## Bonus Challenges (Optional)\n",
+        "\n",
+        "For extra credit, try these:\n",
+        "\n",
+        "1. **Complex Nested Conditions:** Add more sophisticated logic to your recommendation system\n",
+        "\n",
+        "2. **Point System:** Create a quiz with multiple questions that tracks points\n",
+        "\n",
+        "3. **Password Validator:** Check if a password meets criteria:\n",
+        "   - At least 8 characters\n",
+        "   - Contains numbers\n",
+        "   - Contains uppercase and lowercase"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "bonus_code"
+      },
+      "outputs": [],
+      "source": [
+        "# BONUS CHALLENGES (Optional)\n",
+        "\n",
+        "# Write your bonus code here:\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "code_quality"
+      },
+      "source": [
+        "\n",
+        "## ✅ Code Quality Checklist\n",
+        "Doublec click this cell, and put an x in the square brackets to mark it as done.\n",
+        "\n",
+        "Example:\n",
+        "- [x] Put an x to mark it as done\n",
+        "\n",
+        "Before submitting, verify:\n",
+        "- [ ] All parts completed\n",
+        "- [ ] Comments explaining logic\n",
+        "- [ ] Clear variable names\n",
+        "- [ ] Proper indentation\n",
+        "- [ ] Tested with different inputs\n",
+        "- [ ] Code runs without errors\n",
+        "- [ ] Organized into clear sections"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "submission"
+      },
+      "source": [
+        "## 💾 Submission Instructions\n",
+        "\n",
+        "1. Click **Save in Github to keep changes**\n",
+        "2. **File naming convention:** `week2_session2_yourname.ipynb`\n",
+        "3. Add me as a collaborator on your repository. My username is avisink on Github.\n",
+        "\n",
+        "\n",
+        "**Grading:**\n",
+        "- Lab 4: 40 points\n",
+        "- Weekly Assignment 2: 60 points\n",
+        "  - Completeness (25 pts)\n",
+        "  - Correctness (20 pts)\n",
+        "  - Code Quality (10 pts)\n",
+        "  - Creativity (5 pts)\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "summary"
+      },
+      "source": [
+        "## 🎯 Week 2 Complete!\n",
+        "\n",
+        "### Session 1:\n",
+        "- ✅ Getting user input with `input()`\n",
+        "- ✅ Type conversion: `int()`, `float()`, `str()`\n",
+        "- ✅ Building interactive programs\n",
+        "- ✅ F-strings for formatting\n",
+        "\n",
+        "### Session 2:\n",
+        "- ✅ Comparison operators: `==`, `!=`, `>`, `<`, `>=`, `<=`\n",
+        "- ✅ Logical operators: `and`, `or`, `not`\n",
+        "- ✅ If/elif/else statements\n",
+        "- ✅ Nested conditions\n",
+        "- ✅ Python indentation rules\n",
+        "\n",
+        "**Next Week Preview:**\n",
+        "- Lists and data collections\n",
+        "- For loops\n",
+        "- While loops\n",
+        "- Working with multiple items\n",
+        "\n",
+        "**Excellent progress! See you in Week 3! 🚀**"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8.0"
+    },
+    "colab": {
+      "provenance": []
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
