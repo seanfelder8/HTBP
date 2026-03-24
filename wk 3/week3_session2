@@ -1,0 +1,1823 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "6enHsTmIJv3R"
+      },
+      "source": [
+        "# Week 3, Session 2: Loops\n",
+        "\n",
+        "**Date:** ___________  \n",
+        "**Student Name:** ___________\n",
+        "\n",
+        "## Learning Objectives\n",
+        "- Understand loop concepts and when to use them\n",
+        "- Use `for` loops with `range()`\n",
+        "- Iterate through lists\n",
+        "- Use `while` loops\n",
+        "- Control loops with `break` and `continue`\n",
+        "\n",
+        "---"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "mPyx7z84Jv3S"
+      },
+      "source": [
+        "## Part 1: Why Loops?\n",
+        "\n",
+        "**Problem:** What if you need to do something many times?\n",
+        "\n",
+        "Without loops, you'd have to write repetitive code:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "X3Y6NO9EJv3T"
+      },
+      "outputs": [],
+      "source": [
+        "# Bad approach - repetitive!\n",
+        "print(\"Welcome!\")\n",
+        "print(\"Welcome!\")\n",
+        "print(\"Welcome!\")\n",
+        "print(\"Welcome!\")\n",
+        "print(\"Welcome!\")\n",
+        "\n",
+        "# What if you needed to print it 100 times? 😱"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "my9iBJSvJv3T"
+      },
+      "outputs": [],
+      "source": [
+        "# Better approach - use a loop!\n",
+        "for i in range(5):\n",
+        "    print(\"Welcome!\")\n",
+        "\n",
+        "# For 100 times? Just change the number!\n",
+        "# for i in range(100):\n",
+        "#     print(\"Welcome!\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "oj1Ap4QOJv3U"
+      },
+      "source": [
+        "**Loops let you:**\n",
+        "- Repeat actions automatically\n",
+        "- Process each item in a collection\n",
+        "- Keep running until a condition is met\n",
+        "- Write less code that does more work"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "6MDWBSPtJv3U"
+      },
+      "source": [
+        "---\n",
+        "## Part 2: For Loops with range()\n",
+        "\n",
+        "A **for loop** repeats a block of code a specific number of times.\n",
+        "\n",
+        "**Syntax:**\n",
+        "```python\n",
+        "for variable in range(number):\n",
+        "    # code to repeat\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "-A4O1PgcJv3U"
+      },
+      "source": [
+        "### Basic range() - Count from 0"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "791lY37tJv3V",
+        "collapsed": true,
+        "outputId": "2de83197-2638-49d2-b1d3-099aa22c2e6f",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "0\n",
+            "1\n",
+            "2\n",
+            "3\n",
+            "4\n"
+          ]
+        }
+      ],
+      "source": [
+        "# range(n) generates numbers from 0 to n-1\n",
+        "for i in range(5):\n",
+        "    print(i)\n",
+        "\n",
+        "# Output: 0, 1, 2, 3, 4\n",
+        "# Notice: starts at 0, stops BEFORE 5"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "utCKEhO0Jv3V"
+      },
+      "outputs": [],
+      "source": [
+        "# Use the loop variable in your code\n",
+        "for i in range(5):\n",
+        "    print(f\"This is iteration number {i}\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "id": "c3J42ciTJv3W",
+        "outputId": "a8a71f7c-7daf-4280-9b49-f9bb19eb649b",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Hip hip hooray!\n",
+            "Hip hip hooray!\n",
+            "Hip hip hooray!\n",
+            "🎉\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Common use: repeat an action\n",
+        "for i in range(3):\n",
+        "    print(\"Hip hip hooray!\")\n",
+        "\n",
+        "print(\"🎉\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "SREzcpgyJv3W"
+      },
+      "source": [
+        "### range(start, stop) - Custom Starting Point"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "ocVFokf4Jv3W"
+      },
+      "outputs": [],
+      "source": [
+        "# Start at 1 instead of 0\n",
+        "for i in range(1, 6):\n",
+        "    print(i)\n",
+        "\n",
+        "# Output: 1, 2, 3, 4, 5\n",
+        "# Starts at 1, stops BEFORE 6"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "R1sLgwHRJv3W"
+      },
+      "outputs": [],
+      "source": [
+        "# Print years from 2020 to 2024\n",
+        "for year in range(2020, 2025):\n",
+        "    print(f\"Year: {year}\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "BNfFAo2aJv3X"
+      },
+      "source": [
+        "### range(start, stop, step) - Skip Numbers"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "tfUbsV91Jv3X"
+      },
+      "outputs": [],
+      "source": [
+        "# Count by 2's (even numbers)\n",
+        "for i in range(0, 10, 2):\n",
+        "    print(i)\n",
+        "\n",
+        "# Output: 0, 2, 4, 6, 8"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "FQFBDoz8Jv3X"
+      },
+      "outputs": [],
+      "source": [
+        "# Count by 5's\n",
+        "for i in range(0, 51, 5):\n",
+        "    print(i)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "62gyKJmkJv3X"
+      },
+      "outputs": [],
+      "source": [
+        "# Count backwards!\n",
+        "for i in range(10, 0, -1):\n",
+        "    print(i)\n",
+        "print(\"Blast off! 🚀\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "7xRE_oXdJv3X"
+      },
+      "source": [
+        "### Practical Examples with range()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "id": "kYdHuKztJv3X",
+        "outputId": "9494863b-6cef-417d-96e0-e797bbd4dbdc",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Adding 1: total is now 1\n",
+            "Adding 2: total is now 3\n",
+            "Adding 3: total is now 6\n",
+            "Adding 4: total is now 10\n",
+            "Adding 5: total is now 15\n",
+            "Adding 6: total is now 21\n",
+            "Adding 7: total is now 28\n",
+            "Adding 8: total is now 36\n",
+            "Adding 9: total is now 45\n",
+            "Adding 10: total is now 55\n",
+            "\n",
+            "Final sum: 55\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Calculate sum of numbers 1 to 10\n",
+        "total = 0\n",
+        "for i in range(1, 11):\n",
+        "    total = total + i\n",
+        "    print(f\"Adding {i}: total is now {total}\")\n",
+        "\n",
+        "print(f\"\\nFinal sum: {total}\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "id": "Li18vfr-Jv3X",
+        "collapsed": true,
+        "outputId": "7a944f52-8d4e-4411-cfa9-5671f52d2385",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Multiplication table for 7:\n",
+            "=========================\n",
+            "7 × 1 = 7\n",
+            "7 × 2 = 14\n",
+            "7 × 3 = 21\n",
+            "7 × 4 = 28\n",
+            "7 × 5 = 35\n",
+            "7 × 6 = 42\n",
+            "7 × 7 = 49\n",
+            "7 × 8 = 56\n",
+            "7 × 9 = 63\n",
+            "7 × 10 = 70\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Multiplication table\n",
+        "number = 7\n",
+        "print(f\"Multiplication table for {number}:\")\n",
+        "print(\"=\" * 25)\n",
+        "\n",
+        "for i in range(1, 11):\n",
+        "    result = number * i\n",
+        "    print(f\"{number} × {i} = {result}\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "JPZSpDCYJv3X"
+      },
+      "outputs": [],
+      "source": [
+        "# Calculate factorial (5! = 5 × 4 × 3 × 2 × 1)\n",
+        "number = 5\n",
+        "factorial = 1\n",
+        "\n",
+        "for i in range(1, number + 1):\n",
+        "    factorial = factorial * i\n",
+        "\n",
+        "print(f\"{number}! = {factorial}\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "smUVnyfeJv3Y"
+      },
+      "source": [
+        "### ✏️ Your Turn!\n",
+        "Practice with range():"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 14,
+      "metadata": {
+        "id": "JzeKfcohJv3Y",
+        "collapsed": true,
+        "outputId": "e7116965-5c3e-4dd3-edf7-e8ac728ecc5c",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "1\n",
+            "2\n",
+            "3\n",
+            "4\n",
+            "5\n",
+            "6\n",
+            "7\n",
+            "8\n",
+            "9\n",
+            "10\n",
+            "11\n",
+            "12\n",
+            "13\n",
+            "14\n",
+            "15\n",
+            "16\n",
+            "17\n",
+            "18\n",
+            "19\n",
+            "20\n",
+            "1\n",
+            "3\n",
+            "5\n",
+            "7\n",
+            "9\n",
+            "11\n",
+            "13\n",
+            "15\n",
+            "17\n",
+            "19\n",
+            "100\n",
+            "99\n",
+            "98\n",
+            "97\n",
+            "96\n",
+            "95\n",
+            "94\n",
+            "93\n",
+            "92\n",
+            "91\n",
+            "90\n",
+            "Adding 2: total is now 2\n",
+            "Adding 4: total is now 6\n",
+            "Adding 6: total is now 12\n",
+            "Adding 8: total is now 20\n",
+            "Adding 10: total is now 30\n",
+            "Adding 12: total is now 42\n",
+            "Adding 14: total is now 56\n",
+            "Adding 16: total is now 72\n",
+            "Adding 18: total is now 90\n"
+          ]
+        }
+      ],
+      "source": [
+        "# 1. Print numbers from 1 to 20\n",
+        "for i in range(1, 21):\n",
+        "  print(i)\n",
+        "# 2. Print only odd numbers from 1 to 20\n",
+        "for i in range(1, 20, 2):\n",
+        "  print(i)\n",
+        "# 3. Count down from 100 to 90\n",
+        "for i in range(100, 89, -1):\n",
+        "  print(i)\n",
+        "# 4. Calculate the sum of all even numbers from 2 to 20\n",
+        "total = 0\n",
+        "\n",
+        "for i in range(2, 20, 2):\n",
+        "      total = total + i\n",
+        "      print(f\"Adding {i}: total is now {total}\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "FLWs20qRJv3Y"
+      },
+      "source": [
+        "---\n",
+        "## Part 3: Looping Through Lists\n",
+        "\n",
+        "One of the most common uses of loops is to process each item in a list."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "AhOvTno5Jv3Y"
+      },
+      "source": [
+        "### Iterating Over List Items"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "IVK3zm4-Jv3Y"
+      },
+      "outputs": [],
+      "source": [
+        "# Loop through each item\n",
+        "fruits = [\"apple\", \"banana\", \"cherry\", \"date\"]\n",
+        "\n",
+        "for fruit in fruits:\n",
+        "    print(f\"I like {fruit}\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "I7_emPAuJv3Y"
+      },
+      "outputs": [],
+      "source": [
+        "# Process each item\n",
+        "numbers = [1, 2, 3, 4, 5]\n",
+        "\n",
+        "for num in numbers:\n",
+        "    squared = num ** 2\n",
+        "    print(f\"{num} squared is {squared}\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "2G29XXtKJv3Y"
+      },
+      "outputs": [],
+      "source": [
+        "# Build a new list from an existing one\n",
+        "numbers = [1, 2, 3, 4, 5]\n",
+        "doubled = []\n",
+        "\n",
+        "for num in numbers:\n",
+        "    doubled.append(num * 2)\n",
+        "\n",
+        "print(\"Original:\", numbers)\n",
+        "print(\"Doubled:\", doubled)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "yvN3MVoRJv3Y"
+      },
+      "source": [
+        "### Using enumerate() - Get Index and Value"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "R2sTjCHhJv3Y"
+      },
+      "outputs": [],
+      "source": [
+        "# enumerate() gives you both the index and the item\n",
+        "fruits = [\"apple\", \"banana\", \"cherry\"]\n",
+        "\n",
+        "for index, fruit in enumerate(fruits):\n",
+        "    print(f\"{index}: {fruit}\")\n",
+        "\n",
+        "# Output:\n",
+        "# 0: apple\n",
+        "# 1: banana\n",
+        "# 2: cherry"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "JlAGhMXQJv3Y"
+      },
+      "outputs": [],
+      "source": [
+        "# Start counting from 1 instead of 0\n",
+        "fruits = [\"apple\", \"banana\", \"cherry\"]\n",
+        "\n",
+        "for index, fruit in enumerate(fruits, start=1):\n",
+        "    print(f\"{index}. {fruit}\")\n",
+        "\n",
+        "# Output:\n",
+        "# 1. apple\n",
+        "# 2. banana\n",
+        "# 3. cherry"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "7gWXvADnJv3Y"
+      },
+      "source": [
+        "### Filtering Lists with Loops"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "4diwWWVmJv3Z"
+      },
+      "outputs": [],
+      "source": [
+        "# Find all numbers greater than 50\n",
+        "numbers = [23, 67, 89, 12, 45, 91, 34, 78]\n",
+        "large_numbers = []\n",
+        "\n",
+        "for num in numbers:\n",
+        "    if num > 50:\n",
+        "        large_numbers.append(num)\n",
+        "\n",
+        "print(\"Numbers greater than 50:\", large_numbers)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "1VN-wqKqJv3Z"
+      },
+      "outputs": [],
+      "source": [
+        "# Find passing grades\n",
+        "grades = [85, 92, 58, 73, 95, 44, 88]\n",
+        "passing = []\n",
+        "failing = []\n",
+        "\n",
+        "for grade in grades:\n",
+        "    if grade >= 60:\n",
+        "        passing.append(grade)\n",
+        "    else:\n",
+        "        failing.append(grade)\n",
+        "\n",
+        "print(\"Passing grades:\", passing)\n",
+        "print(\"Failing grades:\", failing)\n",
+        "print(f\"Pass rate: {len(passing)}/{len(grades)}\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "LtoNT2ZiJv3Z"
+      },
+      "source": [
+        "### Searching in Lists"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "ZaEqUYAzJv3Z"
+      },
+      "outputs": [],
+      "source": [
+        "# Find if an item exists\n",
+        "fruits = [\"apple\", \"banana\", \"cherry\", \"date\"]\n",
+        "search_for = \"cherry\"\n",
+        "found = False\n",
+        "\n",
+        "for fruit in fruits:\n",
+        "    if fruit == search_for:\n",
+        "        found = True\n",
+        "        print(f\"Found {search_for}!\")\n",
+        "        break  # Stop searching once found\n",
+        "\n",
+        "if not found:\n",
+        "    print(f\"{search_for} not found\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 15,
+      "metadata": {
+        "id": "je8iC_6JJv3Z",
+        "outputId": "9eef53ca-b349-4af1-dea2-51281adb7d47",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The number 2 appears 4 times\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Count occurrences\n",
+        "numbers = [1, 2, 3, 2, 4, 2, 5, 2]\n",
+        "target = 2\n",
+        "count = 0\n",
+        "\n",
+        "for num in numbers:\n",
+        "    if num == target:\n",
+        "        count += 1\n",
+        "\n",
+        "print(f\"The number {target} appears {count} times\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "GSMgkt1pJv3Z"
+      },
+      "source": [
+        "### ✏️ Your Turn!\n",
+        "Practice looping through lists:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 16,
+      "metadata": {
+        "id": "6GY-aF6OJv3Z",
+        "collapsed": true,
+        "outputId": "2d825332-2d07-475e-a0c9-dc01da3d1555",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The temps 75 appears 1 times\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Given this list of temperatures\n",
+        "temps = [72, 68, 75, 82, 79, 73, 85]\n",
+        "\n",
+        "# 1. Print each temperature with its day number\n",
+        "\n",
+        "\n",
+        "# 2. Find the average temperature\n",
+        "\n",
+        "\n",
+        "# 3. Count how many days were above 75 degrees\n",
+        "temps = [72, 68, 75, 82, 79, 73, 85]\n",
+        "target = 75\n",
+        "count = 0\n",
+        "\n",
+        "for num in temps:\n",
+        "    if num == target:\n",
+        "        count += 1\n",
+        "\n",
+        "print(f\"The temps {target} appears {count} times\")\n",
+        "# 4. Create a list of only temperatures above 75\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Tk9tms-qJv3g"
+      },
+      "source": [
+        "---\n",
+        "## Part 4: While Loops\n",
+        "\n",
+        "A **while loop** repeats as long as a condition is True.\n",
+        "\n",
+        "**For loop:** Use when you know how many times to repeat  \n",
+        "**While loop:** Use when you don't know how many times (repeat until condition is met)\n",
+        "\n",
+        "**Syntax:**\n",
+        "```python\n",
+        "while condition:\n",
+        "    # code to repeat\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "kTjKFJ3CJv3g"
+      },
+      "source": [
+        "### Basic While Loops"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "kWXx3zTdJv3g"
+      },
+      "outputs": [],
+      "source": [
+        "# Count from 0 to 4\n",
+        "count = 0\n",
+        "while count < 5:\n",
+        "    print(count)\n",
+        "    count = count + 1  # IMPORTANT: Update the counter so it can move!\n",
+        "\n",
+        "# Output: 0, 1, 2, 3, 4"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "jNN9aXzBJv3g"
+      },
+      "outputs": [],
+      "source": [
+        "# Countdown\n",
+        "countdown = 5\n",
+        "while countdown > 0:\n",
+        "    print(countdown)\n",
+        "    countdown -= 1  # Same as \"countdown = countdown - 1\"\n",
+        "print(\"Blast off! 🚀\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "whvD0ROkJv3g"
+      },
+      "source": [
+        "⚠️ **WARNING: Infinite Loops!**\n",
+        "\n",
+        "If you forget to update the condition, the loop will run forever!\n",
+        "\n",
+        "```python\n",
+        "# DON'T RUN THIS - it will freeze!\n",
+        "# count = 0\n",
+        "# while count < 5:\n",
+        "#     print(count)\n",
+        "#     # Forgot to increment count - runs forever!\n",
+        "```\n",
+        "\n",
+        "If you accidentally create an infinite loop, click the stop button or restart the kernel!"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "BIVA4nZwJv3g"
+      },
+      "source": [
+        "### While Loops with User Input"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "2mVrDpVlJv3g"
+      },
+      "outputs": [],
+      "source": [
+        "# Keep asking until valid input\n",
+        "# Uncomment to test (commented out so notebook doesn't hang)\n",
+        "\n",
+        "# while True:\n",
+        "#     age = input(\"Enter your age: \")\n",
+        "#     if age.isdigit():  # Check if it's a number\n",
+        "#         age = int(age)\n",
+        "#         print(f\"Thank you! You are {age} years old.\")\n",
+        "#         break  # Exit the loop\n",
+        "#     else:\n",
+        "#         print(\"Please enter a valid number!\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "4oxRTgZRJv3h"
+      },
+      "outputs": [],
+      "source": [
+        "# Password validator\n",
+        "# Uncomment to test\n",
+        "\n",
+        "# correct_password = \"python123\"\n",
+        "# attempts = 0\n",
+        "# max_attempts = 3\n",
+        "#\n",
+        "# while attempts < max_attempts:\n",
+        "#     password = input(\"Enter password: \")\n",
+        "#     if password == correct_password:\n",
+        "#         print(\"Access granted! ✓\")\n",
+        "#         break\n",
+        "#     else:\n",
+        "#         attempts += 1\n",
+        "#         remaining = max_attempts - attempts\n",
+        "#         if remaining > 0:\n",
+        "#             print(f\"Wrong password. {remaining} attempts remaining.\")\n",
+        "#         else:\n",
+        "#             print(\"Access denied. Too many failed attempts.\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "7_FNaffvJv3h"
+      },
+      "source": [
+        "### While Loop Examples"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "yMqhOGTtJv3h"
+      },
+      "outputs": [],
+      "source": [
+        "# Double a number until it exceeds 1000\n",
+        "number = 1\n",
+        "count = 0\n",
+        "\n",
+        "while number <= 1000:\n",
+        "    print(f\"Step {count}: {number}\")\n",
+        "    number = number * 2\n",
+        "    count += 1\n",
+        "\n",
+        "print(f\"\\nIt took {count} doublings to exceed 1000\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "vtizXMd4Jv3h"
+      },
+      "outputs": [],
+      "source": [
+        "# Find first power of 2 greater than 1000\n",
+        "power = 0\n",
+        "result = 2 ** power\n",
+        "\n",
+        "while result <= 1000:\n",
+        "    power += 1\n",
+        "    result = 2 ** power\n",
+        "\n",
+        "print(f\"2^{power} = {result} is the first power of 2 greater than 1000\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "8BWj28AlJv3h"
+      },
+      "source": [
+        "---\n",
+        "## Part 5: Loop Control - break and continue\n",
+        "\n",
+        "Sometimes you need to control how a loop runs:\n",
+        "- **break** - exit the loop immediately\n",
+        "- **continue** - skip to the next iteration"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Z8z0HlVKJv3h"
+      },
+      "source": [
+        "### The break Statement"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "8fBXfV0rJv3h"
+      },
+      "outputs": [],
+      "source": [
+        "# Stop when condition is met\n",
+        "for i in range(10):\n",
+        "    if i == 5:\n",
+        "        print(\"Found 5! Stopping.\")\n",
+        "        break\n",
+        "    print(i)\n",
+        "\n",
+        "# Output: 0, 1, 2, 3, 4, \"Found 5! Stopping.\""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "xA2pUqc5Jv3h"
+      },
+      "outputs": [],
+      "source": [
+        "# Search for a value and stop when found\n",
+        "numbers = [10, 23, 45, 67, 89, 12, 34]\n",
+        "target = 67\n",
+        "found_at = -1\n",
+        "\n",
+        "for index, num in enumerate(numbers):\n",
+        "    if num == target:\n",
+        "        found_at = index\n",
+        "        break  # Stop searching\n",
+        "\n",
+        "if found_at != -1:\n",
+        "    print(f\"Found {target} at index {found_at}\")\n",
+        "else:\n",
+        "    print(f\"{target} not found\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QSVHPHG1Jv3h"
+      },
+      "source": [
+        "### The continue Statement"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "PDsgB5CfJv3h"
+      },
+      "outputs": [],
+      "source": [
+        "# Skip even numbers, only print odd\n",
+        "for i in range(10):\n",
+        "    if i % 2 == 0:  # If even\n",
+        "        continue    # Skip the rest and go to next iteration\n",
+        "    print(i)\n",
+        "\n",
+        "# Output: 1, 3, 5, 7, 9"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "IhMn1w56Jv3h"
+      },
+      "outputs": [],
+      "source": [
+        "# Process only positive numbers\n",
+        "numbers = [10, -5, 23, -12, 45, -8, 67]\n",
+        "total = 0\n",
+        "\n",
+        "for num in numbers:\n",
+        "    if num < 0:\n",
+        "        continue  # Skip negative numbers\n",
+        "    total += num\n",
+        "    print(f\"Adding {num}, total: {total}\")\n",
+        "\n",
+        "print(f\"\\nSum of positive numbers: {total}\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "S9TPhhWjJv3i"
+      },
+      "outputs": [],
+      "source": [
+        "# Filter out empty strings\n",
+        "words = [\"hello\", \"\", \"world\", \"\", \"python\", \"\"]\n",
+        "\n",
+        "for word in words:\n",
+        "    if word == \"\":\n",
+        "        continue  # Skip empty strings\n",
+        "    print(word.upper())"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ZID2OUUAJv3i"
+      },
+      "source": [
+        "### break vs continue"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "7W7mXSaBJv3i"
+      },
+      "outputs": [],
+      "source": [
+        "# Comparing break and continue\n",
+        "\n",
+        "print(\"With break:\")\n",
+        "for i in range(10):\n",
+        "    if i == 5:\n",
+        "        break  # Stop completely\n",
+        "    print(i)\n",
+        "# Output: 0, 1, 2, 3, 4\n",
+        "\n",
+        "print(\"\\nWith continue:\")\n",
+        "for i in range(10):\n",
+        "    if i == 5:\n",
+        "        continue  # Skip only 5\n",
+        "    print(i)\n",
+        "# Output: 0, 1, 2, 3, 4, 6, 7, 8, 9"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "6MYTIJDpJv3i"
+      },
+      "source": [
+        "### ✏️ Your Turn!\n",
+        "Practice with break and continue:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "eJnlvHa7Jv3i"
+      },
+      "outputs": [],
+      "source": [
+        "# 1. Print numbers 1-20, but stop at 15\n",
+        "\n",
+        "\n",
+        "# 2. Print numbers 1-20, but skip multiples of 3\n",
+        "\n",
+        "\n",
+        "# 3. Find the first number divisible by 7 between 50 and 100\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ovo3AxWqJv3i"
+      },
+      "source": [
+        "---\n",
+        "## Part 6: Nested Loops\n",
+        "\n",
+        "You can put loops inside other loops!"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "g7i2Pw49Jv3i"
+      },
+      "outputs": [],
+      "source": [
+        "# Print a multiplication table\n",
+        "print(\"Multiplication Table (1-5):\\n\")\n",
+        "\n",
+        "for i in range(1, 6):  # Outer loop - rows\n",
+        "    for j in range(1, 6):  # Inner loop - columns\n",
+        "        product = i * j\n",
+        "        print(f\"{product:3}\", end=\" \")  # :3 means 3 characters wide\n",
+        "    print()  # New line after each row"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "iwieltwtJv3i"
+      },
+      "outputs": [],
+      "source": [
+        "# Print a pattern\n",
+        "for i in range(5):\n",
+        "    for j in range(i + 1):\n",
+        "        print(\"*\", end=\"\")\n",
+        "    print()\n",
+        "\n",
+        "# Output:\n",
+        "# *\n",
+        "# **\n",
+        "# ***\n",
+        "# ****\n",
+        "# *****"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "GVMnabjDJv3i"
+      },
+      "outputs": [],
+      "source": [
+        "# Process a 2D list (list of lists)\n",
+        "matrix = [\n",
+        "    [1, 2, 3],\n",
+        "    [4, 5, 6],\n",
+        "    [7, 8, 9]\n",
+        "]\n",
+        "\n",
+        "for row in matrix:\n",
+        "    for number in row:\n",
+        "        print(number, end=\" \")\n",
+        "    print()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "LcuM9MS6Jv3i"
+      },
+      "source": [
+        "---\n",
+        "## 🧪 LAB 6: Number Guessing Game\n",
+        "\n",
+        "Create an interactive number guessing game using loops!\n",
+        "\n",
+        "### Version 1: Limited Guesses (For Loop)\n",
+        "\n",
+        "**Requirements:**\n",
+        "1. Computer picks a secret number (you hardcode it, like 42)\n",
+        "2. User has 5 guesses to find it\n",
+        "3. For each guess:\n",
+        "   - Check if correct (if so, break and congratulate)\n",
+        "   - Tell them if guess was too high or too low\n",
+        "   - Keep count of guesses used\n",
+        "4. After loop, tell them if they won or lost\n",
+        "\n",
+        "### Version 2: Unlimited Guesses (While Loop) - BONUS\n",
+        "\n",
+        "**Requirements:**\n",
+        "1. Same as Version 1, but use while loop\n",
+        "2. Let them guess until they get it right\n",
+        "3. Count total guesses\n",
+        "4. Display their score at the end"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "v0OHLVJ9Jv3i"
+      },
+      "outputs": [],
+      "source": [
+        "# LAB 6 - Version 1: Limited Guesses\n",
+        "\n",
+        "print(\"===== NUMBER GUESSING GAME =====\")\n",
+        "print(\"I'm thinking of a number between 1 and 100.\")\n",
+        "print(\"You have 5 guesses to find it!\\n\")\n",
+        "\n",
+        "# The secret number\n",
+        "secret_number = 42\n",
+        "\n",
+        "# Your code here\n",
+        "# Use a for loop with range(5) for 5 guesses\n",
+        "# For each guess:\n",
+        "#   - Get user input (comment out for now, use hardcoded values to test)\n",
+        "#   - Check if correct\n",
+        "#   - Give hint (too high/too low)\n",
+        "#   - Use break if they guess correctly\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "print(\"\\n===== GAME OVER =====\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "AxwzcPJxJv3j"
+      },
+      "outputs": [],
+      "source": [
+        "# LAB 6 - Version 2: Unlimited Guesses (BONUS)\n",
+        "\n",
+        "print(\"===== NUMBER GUESSING GAME (Unlimited) =====\")\n",
+        "print(\"I'm thinking of a number between 1 and 100.\")\n",
+        "print(\"Keep guessing until you find it!\\n\")\n",
+        "\n",
+        "# The secret number\n",
+        "secret_number = 42\n",
+        "\n",
+        "# Your code here\n",
+        "# Use a while True loop\n",
+        "# Keep count of guesses\n",
+        "# Break when correct\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "print(\"\\n===== GAME OVER =====\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "SYvvGevqJv3j"
+      },
+      "source": [
+        "---\n",
+        "## 📝 Reflection Questions"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "MaUz2KZ-Jv3j"
+      },
+      "source": [
+        "**Your Answers:**\n",
+        "\n",
+        "1. When would you use a for loop vs a while loop?\n",
+        "\n",
+        "2. What's the difference between break and continue?\n",
+        "\n",
+        "3. Why is it important to avoid infinite loops?\n",
+        "\n",
+        "4. What's one practical use of loops in real programming?\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "yeVN-8axJv3j"
+      },
+      "source": [
+        "---\n",
+        "## 📚 WEEKLY ASSIGNMENT 3\n",
+        "\n",
+        "**Due: Before Week 4, Session 1**\n",
+        "\n",
+        "This assignment covers everything you learned in Week 3 (Lists and Loops).\n",
+        "\n",
+        "---"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "KN4azoFRJv3j"
+      },
+      "source": [
+        "### Part 1: Grade Analyzer\n",
+        "\n",
+        "Create a program that analyzes student grades using lists and loops.\n",
+        "\n",
+        "**Requirements:**\n",
+        "- Create a list of at least 10 student grades (0-100)\n",
+        "- Use loops to calculate:\n",
+        "  - Average grade\n",
+        "  - Highest grade\n",
+        "  - Lowest grade\n",
+        "  - Number of passing grades (>= 60)\n",
+        "  - Number of A's (>= 90)\n",
+        "- Print a formatted summary report"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "1obbdmIJJv3j"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT Part 1: Grade Analyzer\n",
+        "\n",
+        "print(\"===== GRADE ANALYZER =====\")\n",
+        "print()\n",
+        "\n",
+        "# Create your list of grades\n",
+        "grades = [85, 92, 78, 95, 88, 73, 67, 91, 82, 79]\n",
+        "\n",
+        "# Calculate average\n",
+        "# Hint: sum all grades and divide by len(grades)\n",
+        "\n",
+        "\n",
+        "# Find highest grade\n",
+        "# Hint: start with 0, loop through and update if higher found\n",
+        "\n",
+        "\n",
+        "# Find lowest grade\n",
+        "# Hint: start with 100, loop through and update if lower found\n",
+        "\n",
+        "\n",
+        "# Count passing grades (>= 60)\n",
+        "\n",
+        "\n",
+        "# Count A's (>= 90)\n",
+        "\n",
+        "\n",
+        "# Print summary report\n",
+        "print(\"\\n===== SUMMARY =====\")\n",
+        "print(f\"Total students: {len(grades)}\")\n",
+        "# Print your calculated values\n",
+        "\n",
+        "\n",
+        "\n",
+        "print(\"=\"*30)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "6sYz6Nm3Jv3j"
+      },
+      "source": [
+        "### Part 2: Pattern Printer\n",
+        "\n",
+        "Create programs that print these patterns using loops.\n",
+        "\n",
+        "**Pattern 1 - Right Triangle:**\n",
+        "```\n",
+        "*\n",
+        "**\n",
+        "***\n",
+        "****\n",
+        "*****\n",
+        "```\n",
+        "\n",
+        "**Pattern 2 - Multiplication Table:**\n",
+        "```\n",
+        "1  2  3  4  5\n",
+        "2  4  6  8  10\n",
+        "3  6  9  12 15\n",
+        "4  8  12 16 20\n",
+        "5  10 15 20 25\n",
+        "```\n",
+        "\n",
+        "**Pattern 3 - Countdown:**\n",
+        "```\n",
+        "Count down from 10:\n",
+        "10... 9... 8... 7... 6... 5... 4... 3... 2... 1... Blast off!\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "nteeS7SBJv3j"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT Part 2: Pattern 1 - Right Triangle\n",
+        "\n",
+        "print(\"Pattern 1: Right Triangle\")\n",
+        "# Your code here\n",
+        "# Hint: use nested loops or loop with range and string multiplication\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "lSzmL_TSJv3j"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT Part 2: Pattern 2 - Multiplication Table\n",
+        "\n",
+        "print(\"Pattern 2: Multiplication Table\")\n",
+        "# Your code here\n",
+        "# Hint: use nested loops\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "XRx6yR_FJv3j"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT Part 2: Pattern 3 - Countdown\n",
+        "\n",
+        "print(\"Pattern 3: Countdown\")\n",
+        "# Your code here\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "WDw8V_cMJv3k"
+      },
+      "source": [
+        "### Part 3: List Manipulator\n",
+        "\n",
+        "Start with this list: `[10, 25, 17, 33, 8, 92, 41, 56, 73, 14]`\n",
+        "\n",
+        "Use loops to create new lists containing:\n",
+        "- Only even numbers\n",
+        "- Only numbers greater than 30\n",
+        "- Each number doubled\n",
+        "- Numbers in reverse order (use loop, not .reverse())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "jq8eqDUCJv3k"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT Part 3: List Manipulator\n",
+        "\n",
+        "original = [10, 25, 17, 33, 8, 92, 41, 56, 73, 14]\n",
+        "print(\"Original list:\", original)\n",
+        "print()\n",
+        "\n",
+        "# Create list of even numbers\n",
+        "even_numbers = []\n",
+        "# Your code here\n",
+        "\n",
+        "print(\"Even numbers:\", even_numbers)\n",
+        "\n",
+        "# Create list of numbers > 30\n",
+        "greater_than_30 = []\n",
+        "# Your code here\n",
+        "\n",
+        "print(\"Numbers > 30:\", greater_than_30)\n",
+        "\n",
+        "# Create list of doubled numbers\n",
+        "doubled = []\n",
+        "# Your code here\n",
+        "\n",
+        "print(\"Doubled:\", doubled)\n",
+        "\n",
+        "# Create reversed list (using a loop, not .reverse()!)\n",
+        "reversed_list = []\n",
+        "# Your code here\n",
+        "# Hint: loop backwards through indices\n",
+        "\n",
+        "print(\"Reversed:\", reversed_list)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "S9s-HLjEJv3k"
+      },
+      "source": [
+        "### Part 4: Interactive Menu System\n",
+        "\n",
+        "Create a program with a menu that keeps running until user chooses to quit.\n",
+        "\n",
+        "**Menu Options:**\n",
+        "```\n",
+        "--- To-Do List Manager ---\n",
+        "1. Add item to list\n",
+        "2. Remove item from list\n",
+        "3. View all items\n",
+        "4. Clear all items\n",
+        "5. Quit\n",
+        "\n",
+        "Choose an option:\n",
+        "```\n",
+        "\n",
+        "**Requirements:**\n",
+        "- Use a while loop to keep the menu running\n",
+        "- Use if/elif statements to handle each option\n",
+        "- Start with an empty list\n",
+        "- For testing, use hardcoded choices instead of input()\n",
+        "- Comment out input() lines and test with predetermined values"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "SYwzCtEzJv3k"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT Part 4: Interactive Menu System\n",
+        "\n",
+        "print(\"===== TO-DO LIST MANAGER =====\")\n",
+        "\n",
+        "# Start with empty to-do list\n",
+        "todo_list = []\n",
+        "\n",
+        "# For testing, use these simulated choices instead of input()\n",
+        "# Once it works, you can uncomment the input() lines to make it interactive\n",
+        "test_choices = [\"1\", \"1\", \"1\", \"3\", \"2\", \"3\", \"5\"]  # Simulated user inputs\n",
+        "test_items = [\"Buy groceries\", \"Call dentist\", \"Finish homework\", \"Buy groceries\"]\n",
+        "choice_index = 0\n",
+        "item_index = 0\n",
+        "\n",
+        "# Your code here\n",
+        "# Use while True loop\n",
+        "# Display menu\n",
+        "# Get choice\n",
+        "# Use if/elif/else for each option\n",
+        "# Break when user chooses \"5\"\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "print(\"\\nGoodbye!\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "VF6L9UnbJv3k"
+      },
+      "source": [
+        "### Part 5: FizzBuzz Challenge\n",
+        "\n",
+        "Classic programming challenge!\n",
+        "\n",
+        "**Rules:**\n",
+        "- Loop through numbers 1 to 100\n",
+        "- For multiples of 3, print \"Fizz\"\n",
+        "- For multiples of 5, print \"Buzz\"\n",
+        "- For multiples of both 3 and 5, print \"FizzBuzz\"\n",
+        "- Otherwise, print the number\n",
+        "\n",
+        "**Example output:**\n",
+        "```\n",
+        "1\n",
+        "2\n",
+        "Fizz\n",
+        "4\n",
+        "Buzz\n",
+        "Fizz\n",
+        "7\n",
+        "...\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "iWgsj4wiJv3k"
+      },
+      "outputs": [],
+      "source": [
+        "# ASSIGNMENT Part 5: FizzBuzz Challenge\n",
+        "\n",
+        "print(\"===== FIZZBUZZ =====\")\n",
+        "\n",
+        "# Your code here\n",
+        "# Hint: Check for multiples using modulus (%)\n",
+        "# Check for both 3 and 5 first!\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "lgWpC-dcJv3k"
+      },
+      "source": [
+        "### Part 6: BONUS Challenges (Optional)\n",
+        "\n",
+        "**Challenge 1: Prime Number Finder**\n",
+        "- Find all prime numbers between 1 and 50\n",
+        "- A prime number is only divisible by 1 and itself\n",
+        "\n",
+        "**Challenge 2: Password Validator**\n",
+        "- Create a program that checks if a password meets these criteria:\n",
+        "  - At least 8 characters long\n",
+        "  - Contains at least one uppercase letter\n",
+        "  - Contains at least one lowercase letter\n",
+        "  - Contains at least one number\n",
+        "- Use loops to check each character\n",
+        "\n",
+        "**Challenge 3: Shopping Cart with Prices**\n",
+        "- Create lists for items and their prices\n",
+        "- Calculate total with 8% tax\n",
+        "- Apply discount if total > $100 (10% off)\n",
+        "- Print itemized receipt"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "-EECoSpCJv3k"
+      },
+      "outputs": [],
+      "source": [
+        "# BONUS Challenge 1: Prime Number Finder\n",
+        "\n",
+        "# Your code here (optional)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "m9naJYhUJv3k"
+      },
+      "outputs": [],
+      "source": [
+        "# BONUS Challenge 2: Password Validator\n",
+        "\n",
+        "# Your code here (optional)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "fkMvdyaGJv3k"
+      },
+      "outputs": [],
+      "source": [
+        "# BONUS Challenge 3: Shopping Cart with Prices\n",
+        "\n",
+        "# Your code here (optional)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "2acp4z-aJv3k"
+      },
+      "source": [
+        "---\n",
+        "## 💾 Submission Instructions\n",
+        "\n",
+        "**How to Submit:**\n",
+        "\n",
+        "1. **Complete all parts** of Lab 6 and Weekly Assignment 3\n",
+        "\n",
+        "2. **Test your code** - make sure everything runs without errors\n",
+        "\n",
+        "3. **Add comments** - explain your logic\n",
+        "\n",
+        "4. Click **Save in Github to keep changes**\n",
+        "5. **File naming convention:** `week3_session2_yourname.ipynb`\n",
+        "6. Add me as a collaborator on your repository. My username is avisink on Github.\n",
+        "\n",
+        "\n",
+        "---\n",
+        "\n",
+        "## 🎯 Week 3 Complete!\n",
+        "\n",
+        "Congratulations! In Week 3, you learned:\n",
+        "\n",
+        "### Session 1:\n",
+        "- ✅ Lists - creating, accessing, modifying\n",
+        "- ✅ List methods - append, remove, sort, etc.\n",
+        "- ✅ Tuples - immutable lists\n",
+        "- ✅ Sets - unique collections\n",
+        "- ✅ Set operations\n",
+        "\n",
+        "### Session 2:\n",
+        "- ✅ For loops with range()\n",
+        "- ✅ Looping through lists\n",
+        "- ✅ While loops\n",
+        "- ✅ Break and continue\n",
+        "- ✅ Nested loops\n",
+        "\n",
+        "**Next Week Preview:**\n",
+        "- Functions - organizing code into reusable pieces\n",
+        "- Dictionaries - key-value pairs\n",
+        "- Team project kickoff!\n",
+        "\n",
+        "**Great job! You're halfway through the course! 🎉**"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8.0"
+    },
+    "colab": {
+      "provenance": []
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
